@@ -3,213 +3,733 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eslam Mohammed | Portfolio</title>
+    <meta name="description" content="Eslam Elattar - UI/UX Designer & Full Stack .NET Web Developer. Building scalable web apps and user-centered designs.">
+    <meta name="keywords" content="Eslam Elattar, UI/UX Designer, Full Stack .NET Developer, ASP.NET Core, Figma, Web Developer">
+    <meta name="author" content="Eslam Elattar">
+    <meta name="theme-color" content="#6366f1">
+    <title>Eslam Elattar | UI/UX Designer & Full Stack .NET Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader" aria-hidden="true">
+        <div class="loader__inner">
+            <div class="loader__logo">&lt;EE /&gt;</div>
+            <div class="loader__bar"><div class="loader__progress"></div></div>
+            <div class="loader__text">Loading portfolio...</div>
+        </div>
+    </div>
 
-    <header>
-        <div class="logo">Eslam<span>.</span></div>
-        <nav>
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
+    <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
+    <!-- Background Shapes -->
+    <div class="bg-shapes" aria-hidden="true">
+        <div class="shape shape--1"></div>
+        <div class="shape shape--2"></div>
+        <div class="shape shape--3"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container" aria-label="Main navigation">
+            <a href="#home" class="nav__logo" aria-label="Home">
+                <span class="nav__logo-bracket">&lt;</span>EE<span class="nav__logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="#home" class="nav__link active">Home</a></li>
+                <li><a href="#about" class="nav__link">About</a></li>
+                <li><a href="#education" class="nav__link">Education</a></li>
+                <li><a href="#experience" class="nav__link">Experience</a></li>
+                <li><a href="#skills" class="nav__link">Skills</a></li>
+                <li><a href="#projects" class="nav__link">Projects</a></li>
+                <li><a href="#certificates" class="nav__link">Certificates</a></li>
+                <li><a href="#services" class="nav__link">Services</a></li>
+                <li><a href="#reviews" class="nav__link">Reviews</a></li>
+                <li><a href="#contact" class="nav__link">Contact</a></li>
             </ul>
+            <div class="nav__actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <button class="nav__toggle" id="navToggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
-    <section id="hero" class="hero">
-        <div class="hero-content">
-            <h1>Hi, I'm <span>Eslam Mohammed</span></h1>
-            <h2>UI/UX Designer & Full Stack .NET Engineer</h2>
-            <p>I bridge the gap between intuitive user interface design and high-performance backend code.</p>
-            <div class="hero-btns">
-                <a href="#projects" class="btn primary-btn">View Work</a>
-                <a href="#contact" class="btn secondary-btn">Contact Me</a>
+    <main>
+        <!-- Home -->
+        <section class="hero section" id="home">
+            <div class="container hero__container">
+                <div class="hero__content reveal">
+                    <p class="hero__greeting">Hi, I'm</p>
+                    <h1 class="hero__title">Eslam <span class="gradient-text">Elattar</span></h1>
+                    <p class="hero__subtitle">
+                        I'm a <span class="typing-text" id="typingText" aria-live="polite">UI/UX Designer & Full Stack .NET Web Developer</span><span class="typing-cursor">|</span>
+                    </p>
+                    <p class="hero__description">
+                        Passionate about bridging the gap between elegant design and high-performance code[cite: 9]. Crafting user-centered interfaces with Figma and engineering scalable backends using C#, ASP.NET Core, and RESTful APIs[cite: 9].
+                    </p>
+                    <div class="hero__cta">
+                        <a href="Eslam_Elattar_CV.pdf" class="btn btn--primary" download>
+                            <i class="fas fa-download" aria-hidden="true"></i> Download CV
+                        </a>
+                        <a href="#contact" class="btn btn--outline">
+                            <i class="fas fa-envelope" aria-hidden="true"></i> Contact Me
+                        </a>
+                    </div>
+                    <div class="hero__social">
+                        <a href="https://github.com/EslamElattar-UI" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/eslam-elattar-b59423419" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://behance.net/EslamElatar" target="_blank" rel="noopener noreferrer" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                        <a href="mailto:eslamelattar2004@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="hero__image reveal reveal--delay">
+                    <div class="hero__image-wrapper glass hero__image-wrapper--photo">
+                        <img src="assets/Eslam3.jpg" alt="Eslam Elattar" width="400" height="500" loading="eager">
+                        <div class="hero__badge hero__badge--1"><i class="fas fa-paint-brush"></i></div>
+                        <div class="hero__badge hero__badge--2"><i class="fas fa-code"></i></div>
+                        <div class="hero__badge hero__badge--3"><i class="fas fa-server"></i></div>
+                    </div>
+                </div>
+            </div>
+            <a href="#about" class="hero__scroll" aria-label="Scroll to about section">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- About -->
+        <section class="about section" id="about">
+            <div class="container">
+                <header class="section__header reveal">
+                    <span class="section__tag">About Me</span>
+                    <h2 class="section__title">Know Who <span class="gradient-text">I Am</span></h2>
+                </header>
+                <div class="about__grid">
+                    <div class="about__text reveal">
+                        <p>
+                            I'm <strong>Eslam Elattar</strong>, a results-driven <strong>UI/UX Designer and Full Stack .NET Web Developer</strong>[cite: 9]. I solve the problem of products that look great but perform poorly, or backend-heavy apps that confuse users.
+                        </p>
+                        <p>
+                            Skilled in crafting user-centered interfaces using Figma, as well as developing scalable backend architectures using C#, ASP.NET Core, RESTful Web APIs, and relational databases[cite: 9].
+                        </p>
+                        <p>
+                            Strong in problem solving, clean code practices, usability testing, and fast learning[cite: 9]. <strong>Arabic</strong> (Native) and <strong>English</strong> (Professional Working Proficiency)[cite: 9].
+                        </p>
+                    </div>
+                    <div class="about__info reveal reveal--delay">
+                        <div class="info-card glass">
+                            <span class="info-card__label">Name</span>
+                            <span class="info-card__value">Eslam Elattar</span>
+                        </div>
+                        <div class="info-card glass">
+                            <span class="info-card__label">Role</span>
+                            <span class="info-card__value">UI/UX Designer &amp; Full Stack .NET Developer</span>
+                        </div>
+                        <div class="info-card glass">
+                            <span class="info-card__label">Location</span>
+                            <span class="info-card__value">Az Zaqāzīq, Sharkia, Egypt</span>
+                        </div>
+                        <div class="info-card glass">
+                            <span class="info-card__label">Email</span>
+                            <span class="info-card__value">eslamelattar2004@gmail.com</span>
+                        </div>
+                        <div class="info-card glass">
+                            <span class="info-card__label">Phone</span>
+                            <span class="info-card__value">+20 1280792214</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Stats Counters Section -->
+                <div class="stats__grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+                    <div class="stat-card glass" style="text-align: center; padding: 2rem; border-radius: 1rem;">
+                        <h3 class="stat-card__number gradient-text" data-target="23" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">23</h3>
+                        <p class="stat-card__label" style="font-size: 0.95rem; opacity: 0.8;">Projects Completed</p>
+                    </div>
+                    <div class="stat-card glass" style="text-align: center; padding: 2rem; border-radius: 1rem;">
+                        <h3 class="stat-card__number gradient-text" data-target="7" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">7</h3>
+                        <p class="stat-card__label" style="font-size: 0.95rem; opacity: 0.8;">Certificates Earned</p>
+                    </div>
+                    <div class="stat-card glass" style="text-align: center; padding: 2rem; border-radius: 1rem;">
+                        <h3 class="stat-card__number gradient-text" data-target="20" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">20</h3>
+                        <p class="stat-card__label" style="font-size: 0.95rem; opacity: 0.8;">Technologies Learned</p>
+                    </div>
+                    <div class="stat-card glass" style="text-align: center; padding: 2rem; border-radius: 1rem;">
+                        <h3 class="stat-card__number gradient-text" data-target="4" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">4</h3>
+                        <p class="stat-card__label" style="font-size: 0.95rem; opacity: 0.8;">Training Programs</p>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <section class="education section" id="education">
+                    <div class="container">
+                        <header class="section__header reveal">
+                            <span class="section__tag">Education</span>
+                            <h2 class="section__title">My <span class="gradient-text">Academic Journey</span></h2>
+                        </header>
+                        <div class="timeline">
+                            <article class="timeline__item reveal">
+                                <div class="timeline__marker"></div>
+                                <div class="timeline__content glass">
+                                    <span class="timeline__date">10/2024 – Expected 07/2027</span>
+                                    <h3 class="timeline__title">Bachelor of Computer Science</h3>
+                                    <p class="timeline__org">Faculty of Computers and Informatics, Zagazig University</p>
+                                    <p class="timeline__gpa">Focus on Software Engineering, Web Technologies, Databases, and Data Structures[cite: 9].</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Experience -->
+                <section class="experience section" id="experience">
+                    <div class="container">
+                        <header class="section__header reveal">
+                            <span class="section__tag">Experience</span>
+                            <h2 class="section__title">Professional <span class="gradient-text">Journey</span></h2>
+                        </header>
+                        <div class="experience__grid">
+                            <article class="exp-card glass reveal">
+                                <div class="exp-card__icon"><i class="fas fa-server"></i></div>
+                                <span class="exp-card__date">07/2026 – Present · Egypt</span>
+                                <h3 class="exp-card__title">Full Stack .NET Web Developer Trainee</h3>
+                                <p class="exp-card__company">Digital Egypt Pioneers Initiative (DEPI)</p>
+                                <ul class="exp-card__list">
+                                    <li>Architecting and developing backend Web APIs using C#, ASP.NET Core, and Entity Framework Core[cite: 9].</li>
+                                    <li>Managing relational database integration (SQL Server, MySQL) using Clean Architecture principles[cite: 9].</li>
+                                    <li>Utilizing Git &amp; GitHub for version control in Agile/Scrum environments[cite: 9].</li>
+                                </ul>
+                                <div class="exp-card__tech">
+                                    <span>C#</span><span>ASP.NET Core</span><span>Web API</span><span>EF Core</span><span>SQL Server</span><span>MySQL</span>
+                                </div>
+                            </article>
+                            <article class="exp-card glass reveal">
+                                <div class="exp-card__icon"><i class="fas fa-paint-brush"></i></div>
+                                <span class="exp-card__date">02/2025 – 04/2026 · Cairo, Egypt</span>
+                                <h3 class="exp-card__title">UI/UX Designer</h3>
+                                <p class="exp-card__company">Sporton</p>
+                                <ul class="exp-card__list">
+                                    <li>Designed modern web and mobile interfaces tailored to sports and interactive experiences[cite: 9].</li>
+                                    <li>Created low-to-high fidelity wireframes, user flows, and interactive prototypes in Figma[cite: 9].</li>
+                                    <li>Established Design Systems and UI kits to ensure visual consistency and efficient handoffs[cite: 9].</li>
+                                </ul>
+                                <div class="exp-card__tech">
+                                    <span>Figma</span><span>UI/UX</span><span>Wireframing</span><span>Prototyping</span><span>Design Systems</span>
+                                </div>
+                            </article>
+                            <article class="exp-card glass reveal">
+                                <div class="exp-card__icon"><i class="fas fa-user-astronaut"></i></div>
+                                <span class="exp-card__date">08/2025 – 09/2025 · Cairo, Egypt</span>
+                                <h3 class="exp-card__title">UI/UX Designer Trainee</h3>
+                                <p class="exp-card__company">National Telecommunication Institute (NTI)</p>
+                                <ul class="exp-card__list">
+                                    <li>Conducted user research, defined personas, mapped user journeys, and crafted Information Architecture (IA)[cite: 9].</li>
+                                    <li>Built responsive layouts and interactive prototypes applying typography, color theory, and usability principles[cite: 9].</li>
+                                </ul>
+                                <div class="exp-card__tech">
+                                    <span>User Research</span><span>IA</span><span>Usability Testing</span><span>Figma</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills -->
+                <section class="skills section" id="skills">
+                    <div class="container">
+                        <header class="section__header reveal">
+                            <span class="section__tag">Skills</span>
+                            <h2 class="section__title">Technical &amp; Design <span class="gradient-text">Expertise</span></h2>
+                        </header>
+                        <div class="skills__categories">
+                            <div class="skill-category reveal">
+                                <h3 class="skill-category__title"><i class="fas fa-paint-brush"></i> UI/UX &amp; Product Strategy</h3>
+                                <div class="skill-category__grid">
+                                    <div class="skill-item glass"><span class="skill-item__name">Figma</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">Wireframing &amp; Prototyping</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">User Research &amp; Personas</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">Information Architecture (IA)</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">Design Systems &amp; UI Kits</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">Usability Testing</span></div>
+                                </div>
+                            </div>
+                            <div class="skill-category reveal">
+                                <h3 class="skill-category__title"><i class="fas fa-server"></i> Backend &amp; Architecture</h3>
+                                <div class="skill-category__grid">
+                                    <div class="skill-item glass"><span class="skill-item__name">C#</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">ASP.NET Core Web API</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">Entity Framework Core</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">Clean Architecture</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">RESTful APIs</span></div>
+                                </div>
+                            </div>
+                            <div class="skill-category reveal">
+                                <h3 class="skill-category__title"><i class="fas fa-laptop-code"></i> Frontend &amp; Databases</h3>
+                                <div class="skill-category__grid">
+                                    <div class="skill-item glass"><span class="skill-item__name">HTML / CSS / JavaScript</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">Object Oriented Programming</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">Responsive Web Design</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">SQL Server / MySQL</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">PostgreSQL</span></div>
+                                </div>
+                            </div>
+                            <div class="skill-category reveal">
+                                <h3 class="skill-category__title"><i class="fas fa-tools"></i> Tools &amp; Methodologies</h3>
+                                <div class="skill-category__grid">
+                                    <div class="skill-item glass"><span class="skill-item__name">Git &amp; GitHub</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">Agile / Scrum</span></div>
+                                    <div class="skill-item glass"><span class="skill-item__name">Clean Code</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Projects Section -->
+                <section class="projects section" id="projects">
+                    <div class="container">
+                        <header class="section__header reveal">
+                            <span class="section__tag">Portfolio</span>
+                            <h2 class="section__title">Featured <span class="gradient-text">Projects</span></h2>
+                        </header>
+
+                        <!-- Project Filters -->
+                        <div class="projects__filters reveal">
+                            <button class="filter-btn active" data-filter="all" type="button">All</button>
+                            <button class="filter-btn" data-filter="uiux" type="button">UI/UX Design</button>
+                            <button class="filter-btn" data-filter="fullstack" type="button">Full Stack</button>
+                        </div>
+
+                        <!-- Projects Grid -->
+                        <div class="projects__grid" id="projectsGrid">
+
+                            <!-- Project 1: RentGo -->
+                            <article class="project-card glass reveal" data-category="uiux web">
+                                <div class="project-card__image">
+                                    <img src="assets/RentGO.png" alt="RentGo - Car Rental UI/UX Design" loading="lazy">
+                                    <div class="project-card__overlay">
+                                        <a href="https://www.behance.net/gallery/255171763/RentGo" class="project-card__link" target="_blank" rel="noopener" aria-label="Behance Demo"><i class="fab fa-behance"></i></a>
+                                    </div>
+                                </div>
+                                <div class="project-card__body">
+                                    <h3 class="project-card__title">RentGo – Car Rental UI/UX Design</h3>
+                                    <p class="project-card__desc">A sleek and intuitive car rental platform design focusing on seamless booking experience and modern vehicle showcase.</p>
+                                    <ul class="project-card__features">
+                                        <li>User-centered booking flow</li>
+                                        <li>Interactive vehicle preview</li>
+                                        <li>Mobile-first responsive layout</li>
+                                    </ul>
+                                    <div class="project-card__tech">
+                                        <span>Figma</span><span>UI/UX</span><span>Prototyping</span>
+                                    </div>
+                                    <div class="project-card__actions">
+                                        <a href="https://www.behance.net/gallery/255171763/RentGo" class="btn btn--sm btn--primary" target="_blank" rel="noopener"><i class="fab fa-behance"></i> Behance Case Study</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Project 2: Etisalat -->
+                            <article class="project-card glass reveal" data-category="uiux web">
+                                <div class="project-card__image">
+                                    <img src="assets/Etisalat.png" alt="Etisalat - Mobile App UI/UX Redesign" loading="lazy">
+                                    <div class="project-card__overlay">
+                                        <a href="https://www.behance.net/gallery/233898529/Etisalat" class="project-card__link" target="_blank" rel="noopener" aria-label="Behance Demo"><i class="fab fa-behance"></i></a>
+                                    </div>
+                                </div>
+                                <div class="project-card__body">
+                                    <h3 class="project-card__title">Etisalat – Mobile App Redesign</h3>
+                                    <p class="project-card__desc">A modern UI/UX concept and redesign for the Etisalat mobile experience, enhancing account management and user navigation.</p>
+                                    <ul class="project-card__features">
+                                        <li>Streamlined account dashboard</li>
+                                        <li>Simplified bill payment &amp; recharge flow</li>
+                                        <li>Clean and accessible interface</li>
+                                    </ul>
+                                    <div class="project-card__tech">
+                                        <span>Figma</span><span>UI/UX</span><span>Mobile App Design</span>
+                                    </div>
+                                    <div class="project-card__actions">
+                                        <a href="https://www.behance.net/gallery/233898529/Etisalat" class="btn btn--sm btn--primary" target="_blank" rel="noopener"><i class="fab fa-behance"></i> Behance Case Study</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Project 3: University Academic DB -->
+                            <article class="project-card glass reveal" data-category="fullstack web">
+                                <div class="project-card__image">
+                                    <img src="assets/University.jpg" alt="University Academic Database Management System" loading="lazy">
+                                    <div class="project-card__overlay">
+                                        <a href="https://github.com/EslamElattar-UI" class="project-card__link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <div class="project-card__body">
+                                    <h3 class="project-card__title">University Academic DB</h3>
+                                    <p class="project-card__desc">A relational database system designed to manage academic records, student enrollments, courses, and department schedules.</p>
+                                    <ul class="project-card__features">
+                                        <li>Optimized relational database schema</li>
+                                        <li>Student &amp; course management logic</li>
+                                        <li>Efficient query performance &amp; indexing</li>
+                                    </ul>
+                                    <div class="project-card__tech">
+                                        <span>SQL Server</span><span>Database Design</span><span>.NET</span>
+                                    </div>
+                                    <div class="project-card__actions">
+                                        <a href="https://github.com/EslamElattar-UI" class="btn btn--sm btn--outline" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- Project 4: Coursera Redesign (UI/UX) -->
+                            <article class="project-card glass reveal" data-category="uiux web">
+                                <div class="project-card__image">
+                                    <img src="assets/Coursera.png" alt="Coursera Website UX/UI Redesign" loading="lazy">
+                                    <div class="project-card__overlay">
+                                        <a href="https://www.behance.net/gallery/233971701/courses" class="project-card__link" target="_blank" rel="noopener" aria-label="Behance Demo"><i class="fab fa-behance"></i></a>
+                                    </div>
+                                </div>
+                                <div class="project-card__body">
+                                    <h3 class="project-card__title">Coursera – UI/UX Redesign</h3>
+                                    <p class="project-card__desc">A comprehensive UI/UX redesign and structure overhaul for Coursera to improve course discovery, user engagement, and navigation.</p>
+                                    <ul class="project-card__features">
+                                        <li>Enhanced course discovery &amp; search UX</li>
+                                        <li>Modernized dashboard &amp; learning interface</li>
+                                        <li>Improved visual hierarchy &amp; accessibility</li>
+                                    </ul>
+                                    <div class="project-card__tech">
+                                        <span>Figma</span><span>UI/UX</span><span>UX Research</span><span>Redesign</span>
+                                    </div>
+                                    <div class="project-card__actions">
+                                        <a href="https://www.behance.net/gallery/233971701/courses" class="btn btn--sm btn--primary" target="_blank" rel="noopener"><i class="fab fa-behance"></i> Behance Case Study</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Project: Sporton -->
+                            <article class="project-card glass reveal" data-category="uiux">
+                                <div class="project-card__image">
+                                    <img src="assets/sporton.png" alt="Sporton - Sports Platform UI/UX Design" loading="lazy">
+                                    <div class="project-card__overlay">
+                                        <a href="https://www.behance.net/gallery/243002519/Sporton-App-Web-Athlete-Portfolio-Sports-Network" class="project-card__link" target="_blank" rel="noopener" aria-label="Behance Demo"><i class="fab fa-behance"></i></a>
+                                    </div>
+                                </div>
+                                <div class="project-card__body">
+                                    <h3 class="project-card__title">Sporton – Digital Sports Platform</h3>
+                                    <p class="project-card__desc">A digital sports platform designed to help athletes present themselves professionally, connect with clubs & coaches, and grow their careers.</p>
+                                    <ul class="project-card__features">
+                                        <li>Athlete Profile & Digital Portfolio</li>
+                                        <li>AI-Powered Analysis & Insights</li>
+                                        <li>Safe, Athlete-Focused Community</li>
+                                    </ul>
+                                    <div class="project-card__tech">
+                                        <span>Figma</span><span>UI/UX</span><span>UX Research</span><span>Mobile App</span>
+                                    </div>
+                                    <div class="project-card__actions">
+                                        <a href="https://www.behance.net/gallery/243002519/Sporton-App-Web-Athlete-Portfolio-Sports-Network" class="btn btn--sm btn--primary" target="_blank" rel="noopener"><i class="fab fa-behance"></i> Behance Case Study</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+                <!-- Certificates Section -->
+                <section class="certificates section" id="certificates">
+                    <div class="container">
+                        <header class="section__header reveal">
+                            <span class="section__tag">Achievements</span>
+                            <h2 class="section__title">Certificates &amp; <span class="gradient-text">Credentials</span></h2>
+                        </header>
+                        <div class="certificates__grid">
+                            <article class="cert-card glass reveal">
+                                <div class="cert-card__icon"><i class="fas fa-award"></i></div>
+                                <h3 class="cert-card__title">Full Stack .NET Web Development Track</h3>
+                                <p class="cert-card__org">Digital Egypt Pioneers Initiative (DEPI)</p>
+                                <span class="cert-card__date"> present 2026</span>
+                            </article>
+                            <!-- Certificate: UI/UX Design -->
+                            <article class="cert-card glass reveal">
+                                <div class="cert-card__icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3 class="cert-card__title">UI/UX Design Professional Certificate</h3>
+                                <p class="cert-card__org">National Telecommunication Institute (NTI)</p>
+                                <span class="cert-card__date">2025</span>
+                                <a href="assets/UIUX.png" class="btn btn--sm btn--outline cert-card__btn"
+                                            <i class="fas fa-external-link-alt"></i> View Certificate
+                                        </a>
+                            </article>
+
+                            <article class="cert-card glass reveal">
+                                <div class="cert-card__icon"><i class="fas fa-certificate"></i></div>
+                                <h3 class="cert-card__title">UI/UX Design Intern (1 Year)</h3>
+                                <p class="cert-card__org">Sporton UI/UX Design</p>
+                                <span class="cert-card__date">Feb 2025 – late April 2026</span>
+                                <a href="view-pdf.html" class="btn btn--sm btn--outline cert-card__btn">
+                                    <i class="fas fa-external-link-alt"></i> View Certificate
+                                </a>
+                            </article>
+
+                            <!-- Certificate: Basics of Programming -->
+                            <article class="cert-card glass reveal">
+                                <div class="cert-card__icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h3 class="cert-card__title">CS50 Basics of Programming With C++ &amp; Database </h3>
+                                <p class="cert-card__org">Octopus Academy</p>
+                                <span class="cert-card__date">Feb 2024 – Jul 2024</span>
+                                <a href="assets/Basics.jpg" class="btn btn--sm btn--outline cert-card__btn"
+                                            <i class="fas fa-external-link-alt"></i> View Certificate
+                                        </a>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Services Section -->
+                <section class="services section" id="services">
+                    <div class="container">
+                        <header class="section__header reveal">
+                            <span class="section__tag">Services</span>
+                            <h2 class="section__title">What I <span class="gradient-text">Offer</span></h2>
+                        </header>
+                        <div class="services__grid">
+                            <article class="service-card glass reveal">
+                                <div class="service-card__icon"><i class="fas fa-paint-brush"></i></div>
+                                <h3 class="service-card__title">UI/UX &amp; Product Design</h3>
+                                <p class="service-card__desc">User research, wireframing, high-fidelity interactive prototypes, and scalable Design Systems using Figma.</p>
+                            </article>
+                            <article class="service-card glass reveal">
+                                <div class="service-card__icon"><i class="fas fa-server"></i></div>
+                                <h3 class="service-card__title">Backend API Engineering</h3>
+                                <p class="service-card__desc">Architecting RESTful Web APIs with C#, ASP.NET Core, EF Core, and relational database integrations following Clean Architecture.</p>
+                            </article>
+                            <article class="service-card glass reveal">
+                                <div class="service-card__icon"><i class="fas fa-laptop-code"></i></div>
+                                <h3 class="service-card__title">Full Stack Web Development</h3>
+                                <p class="service-card__desc">Delivering end-to-end responsive web applications from initial design concept to backend API deployment.</p>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Client Reviews -->
+                <section class="reviews section" id="reviews" aria-labelledby="reviews-heading">
+                    <div class="container">
+                        <header class="section__header reveal">
+                            <span class="section__tag">Testimonials</span>
+                            <h2 class="section__title" id="reviews-heading">Client <span class="gradient-text">Reviews</span></h2>
+                        </header>
+                        <div class="reviews__slider reveal">
+                            <button class="reviews__nav reviews__nav--prev" type="button" id="reviewsPrev" aria-label="Previous reviews">
+                                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                            </button>
+                            <div class="reviews__viewport">
+                                <div class="reviews__track" id="reviewsTrack">
+                                    <article class="review-card glass">
+                                        <div class="review-card__avatar">
+                                            <img src="assets/images/avatar.svg" alt="" width="80" height="80" loading="lazy">
+                                        </div>
+                                        <p class="review-card__text">Osama delivered a polished, responsive storefront on time. Clean code, clear communication, and he handled payment integration without issues.</p>
+                                        <h3 class="review-card__name">Ahmed Hassan</h3>
+                                        <p class="review-card__role">E-Commerce Client</p>
+                                        <div class="review-card__stars" role="img" aria-label="5 out of 5 stars">
+                                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                                        </div>
+                                    </article>
+                                    <article class="review-card glass">
+                                        <div class="review-card__avatar">
+                                            <img src="assets/images/avatar.svg" alt="" width="80" height="80" loading="lazy">
+                                        </div>
+                                        <p class="review-card__text">Great attention to UI detail and performance. The site loads fast on mobile and matches our brand guidelines perfectly.</p>
+                                        <h3 class="review-card__name">Sarah Mitchell</h3>
+                                        <p class="review-card__role">Product Manager</p>
+                                        <div class="review-card__stars" role="img" aria-label="5 out of 5 stars">
+                                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                                        </div>
+                                    </article>
+                                    <article class="review-card glass">
+                                        <div class="review-card__avatar">
+                                            <img src="assets/images/avatar.svg" alt="" width="80" height="80" loading="lazy">
+                                        </div>
+                                        <p class="review-card__text">Professional from start to finish. He understood our requirements quickly and suggested smart improvements to the user flow.</p>
+                                        <h3 class="review-card__name">Omar Khalil</h3>
+                                        <p class="review-card__role">Business Owner</p>
+                                        <div class="review-card__stars" role="img" aria-label="5 out of 5 stars">
+                                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                                        </div>
+                                    </article>
+                                    <article class="review-card glass">
+                                        <div class="review-card__avatar">
+                                            <img src="assets/images/avatar.svg" alt="" width="80" height="80" loading="lazy">
+                                        </div>
+                                        <p class="review-card__text">Collaborating on the portfolio was smooth. Animations feel modern without hurting accessibility, and the layout works on every device.</p>
+                                        <h3 class="review-card__name">Layla Mahmoud</h3>
+                                        <p class="review-card__role">UI/UX Designer</p>
+                                        <div class="review-card__stars" role="img" aria-label="5 out of 5 stars">
+                                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                                        </div>
+                                    </article>
+                                    <article class="review-card glass">
+                                        <div class="review-card__avatar">
+                                            <img src="assets/images/avatar.svg" alt="" width="80" height="80" loading="lazy">
+                                        </div>
+                                        <p class="review-card__text">Solid full-stack skills. REST APIs were well structured, documentation was clear, and he fixed bugs quickly during our review cycles.</p>
+                                        <h3 class="review-card__name">Michael Chen</h3>
+                                        <p class="review-card__role">Tech Lead</p>
+                                        <div class="review-card__stars" role="img" aria-label="5 out of 5 stars">
+                                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                                        </div>
+                                    </article>
+                                    <article class="review-card glass">
+                                        <div class="review-card__avatar">
+                                            <img src="assets/images/avatar.svg" alt="" width="80" height="80" loading="lazy">
+                                        </div>
+                                        <p class="review-card__text">Highly recommend for MEAN stack projects. Reliable, learns fast, and delivers production-ready features we could deploy with confidence.</p>
+                                        <h3 class="review-card__name">Fatima Ali</h3>
+                                        <p class="review-card__role">Startup Founder</p>
+                                        <div class="review-card__stars" role="img" aria-label="5 out of 5 stars">
+                                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                            <button class="reviews__nav reviews__nav--next" type="button" id="reviewsNext" aria-label="Next reviews">
+                                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                            </button>
+                            <div class="reviews__dots" id="reviewsDots" role="tablist" aria-label="Review slides"></div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Contact Section -->
+                <section class="contact section" id="contact">
+                    <div class="container">
+                        <header class="section__header reveal">
+                            <span class="section__tag">Contact</span>
+                            <h2 class="section__title">Get In <span class="gradient-text">Touch</span></h2>
+                            <p class="section__subtitle">Let's build something amazing together.</p>
+                        </header>
+                        <div class="contact__grid">
+                            <!-- Contact Form -->
+                            <form class="contact__form glass reveal" id="contactForm" novalidate>
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+                                    <span class="form-error" id="nameError"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+                                    <span class="form-error" id="emailError"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+                                    <span class="form-error" id="messageError"></span>
+                                </div>
+                                <button type="submit" class="btn btn--primary btn--submit">
+                                    <span class="btn__text">Send Message</span>
+                                    <i class="fas fa-paper-plane btn__icon" aria-hidden="true"></i>
+                                </button>
+                                <p class="form-success" id="formSuccess" hidden>Message sent successfully!</p>
+                            </form>
+
+                            <!-- Contact Info & Map Column -->
+                            <div class="contact__info reveal reveal--delay">
+                                <div class="contact-card glass">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <h4>Email</h4>
+                                        <a href="mailto:eslamelattar2004@gmail.com">eslamelattar2004@gmail.com</a>
+                                    </div>
+                                </div>
+                                <div class="contact-card glass">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <h4>WhatsApp</h4>
+                                        <a href="https://wa.me/201280792214">+20 1280792214</a>
+                                    </div>
+                                </div>
+                                <div class="contact-card glass">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <h4>Location</h4>
+                                        <a href="https://maps.google.com/?q=Al+Qawmiyya,+Salah+Salem+St,+Zagazig" target="_blank" rel="noopener">Al Qawmiyya, Salah Salem St, Zagazig, Egypt</a>
+                                    </div>
+                                </div>
+
+                                <!-- Social Media Links -->
+                                <div class="contact__social">
+                                    <a href="https://github.com/EslamElattar-UI" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                    <a href="https://www.linkedin.com/in/eslam-elattar-b59423419" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://behance.net/EslamElatar" target="_blank" rel="noopener" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                                </div>
+
+                                <!-- Map centered on Zagazig -->
+                                <div class="contact__map glass">
+                                    <iframe title="Zagazig map" src="https://www.openstreetmap.org/export/embed.html?bbox=31.45%2C30.54%2C31.55%2C30.62&amp;layer=mapnik&amp;marker=30.5878%2C31.4839" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer__container">
+            <!-- Brand / Logo -->
+            <div class="footer__brand">
+                <a href="#home" class="footer__logo">&lt;EE<span>/&gt;</span></a>
+                <p>UI/UX Designer &amp; Full Stack .NET Developer crafting modern web experiences.</p>
+            </div>
+
+            <!-- Links -->
+            <div class="footer__links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#services">Services</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="footer__social">
+                <a href="https://github.com/EslamElattar-UI" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/eslam-elattar-b59423419" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:eslamelattar2004@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
-    </section>
 
-    <section id="about" class="about">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-container">
-            <p>Welcome to my portfolio! I am a UI/UX Designer & Full Stack .NET Developer passionate about building end-to-end digital products that balance user experience with engineering excellence.</p>
-            <p>From conducting user research and crafting interactive Figma prototypes to architecting scalable C# ASP.NET Core APIs and databases, I transform complex business problems into seamless, elegant, and scalable web & mobile solutions.</p>
+        <!-- Bottom Copyright -->
+        <div class="footer__bottom">
+            <p>&copy; 2026 Eslam Elattar. All rights reserved.</p>
         </div>
-    </section>
-
-    <section id="skills" class="skills">
-        <h2 class="section-title">Skills & Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <i class="fa-solid fa-pen-nib"></i>
-                <h3>UI/UX & Design Tools</h3>
-                <ul>
-                    <li>Wireframing & Prototyping</li>
-                    <li>Responsive Web & Mobile Design</li>
-                    <li>Design Systems & UI Kits</li>
-                    <li>User Research & Journey Mapping</li>
-                    <li>Information Architecture</li>
-                    <li>Figma & Prototyping</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <i class="fa-solid fa-code"></i>
-                <h3>Development & Tech Stack</h3>
-                <ul>
-                    <li>C# & ASP.NET Core Web APIs</li>
-                    <li>Entity Framework Core & LINQ</li>
-                    <li>Relational Databases (SQL Server / MySQL)</li>
-                    <li>RESTful API Architecture</li>
-                    <li>Clean Architecture & OOP Principles</li>
-                    <li>Git / GitHub Version Control</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience" class="experience">
-        <h2 class="section-title">Work Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <span class="date">Jul 2026 - Present</span>
-                <h3>FullStack .NET Web Developer Trainee</h3>
-                <h4>Digital Egypt Pioneers Initiative (DEPI)</h4>
-                <ul>
-                    <li>Engineering backend architecture and RESTful Web APIs using C# and ASP.NET Core.</li>
-                    <li>Integrating relational database management systems (MySQL / SQL Server) with backend services.</li>
-                    <li>Implementing Clean Architecture principles, Git version control, and software engineering best practices.</li>
-                </ul>
-            </div>
-            <div class="timeline-item">
-                <span class="date">Mar 2025 - Mar 2026</span>
-                <h3>UI/UX Designer</h3>
-                <h4>Sporton</h4>
-                <ul>
-                    <li>Crafted user-centered interface designs and interactive prototypes for digital products.</li>
-                    <li>Streamlined user journeys and improved visual identity through structured design systems.</li>
-                </ul>
-            </div>
-            <div class="timeline-item">
-                <span class="date">Aug 2025 - Sep 2025</span>
-                <h3>UI/UX Designer Trainee</h3>
-                <h4>National Telecommunication Institute (NTI)</h4>
-                <ul>
-                    <li>Conducted UX research, built user personas, mapped user flows, and structured Information Architecture (IA).</li>
-                    <li>Designed low/high-fidelity wireframes and interactive prototypes in Figma.</li>
-                    <li>Applied typography, color theory, grid systems, and usability guidelines to real-world projects.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="services">
-        <h2 class="section-title">Offered Services</h2>
-        <div class="services-grid">
-            <div class="service-box">
-                <i class="fa-solid fa-layer-group"></i>
-                <h3>UI/UX Design & Prototyping</h3>
-                <p>Designing responsive, intuitive, and modern user interfaces (Web & Mobile) using Figma, wireframes, and interactive prototypes.</p>
-            </div>
-            <div class="service-box">
-                <i class="fa-solid fa-laptop-code"></i>
-                <h3>Full-Stack Web Development</h3>
-                <p>Building scalable, end-to-end web applications using C#, ASP.NET Core, RESTful APIs, and modern front-end frameworks.</p>
-            </div>
-            <div class="service-box">
-                <i class="fa-solid fa-database"></i>
-                <h3>Database & API Architecture</h3>
-                <p>Designing efficient database models (SQL Server), writing clean ORM queries (EF Core), and integrating secure APIs.</p>
-            </div>
-            <div class="service-box">
-                <i class="fa-solid fa-pen-ruler"></i>
-                <h3>Product Redesign & Usability Audit</h3>
-                <p>Enhancing existing apps and websites by improving user flows, visual aesthetics, performance, and overall usability.</p>
-            </div>
-            <div class="service-box">
-                <i class="fa-solid fa-swatchbook"></i>
-                <h3>Design Systems & Style Guides</h3>
-                <p>Creating consistent UI kits, component libraries, and documentation for smooth developer handoff and scalable growth.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>Etisalat e& App Redesign</h3>
-                <p>Redesigned the application interface for one of the largest telecom operators to simplify balance top-up, bill payments, and plan renewal flows.</p>
-            </div>
-            <div class="project-card">
-                <h3>Coursera Web Interface</h3>
-                <p>Developed a complete Coursera website UI concept designed to optimize course browsing, learning journey, and purchase flows.</p>
-            </div>
-            <div class="project-card">
-                <h3>RentGO Car Rental App</h3>
-                <p>A modern and practical mobile app interface allowing users to search, compare, and book car rentals with flexible options in just a few steps.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="education" class="education">
-        <h2 class="section-title">Education & Credentials</h2>
-        <div class="edu-container">
-            <ul>
-                <li><strong>Faculty of Computers and Informatics</strong> — Zagazig University [Student]</li>
-                <li><strong>UI/UX Design Internship</strong> — National Telecommunication Institute (NTI)</li>
-                <li><strong>Full Stack .NET Web Developer Trainee</strong> — Digital Egypt Pioneers Initiative (DEPI)</li>
-            </ul>
-        </div>
-
-        <h2 class="section-title" style="margin-top: 50px;">Customer Testimonials</h2>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <p>"Eslam managed to turn my idea into a seamless app. The UI/UX was clean, and the overall execution exceeded my expectations."</p>
-            </div>
-            <div class="testimonial-card">
-                <p>"Very committed to deadlines, highly responsive, and quickly understands technical and design requirements."</p>
-            </div>
-            <div class="testimonial-card">
-                <p>"Great balance between visual aesthetics and technical functionality. Delivered clean Figma prototypes and well-structured code."</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-info">
-            <div class="contact-item">
-                <i class="fa-solid fa-location-dot"></i>
-                <p>123 Downtown St., Zagazig, Egypt</p>
-            </div>
-            <div class="contact-item">
-                <i class="fa-solid fa-phone"></i>
-                <p>+201280792214</p>
-            </div>
-            <div class="contact-item">
-                <i class="fa-solid fa-envelope"></i>
-                <p>eslamelattar2004@gmail.com</p>
-            </div>
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/eslam-elattar-b59423419" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                <a href="https://www.behance.net/lmlttar" target="_blank"><i class="fa-brands fa-behance"></i> Behance</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Eslam Mohammed. All rights reserved.</p>
     </footer>
 
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script src="script.js"></script>
+    
 </body>
 </html>
