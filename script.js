@@ -5,10 +5,9 @@
     const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
     const ROLES = [
-        'Software Engineer',
-        'MEAN Stack Developer',
+        'UI/UX Designer',
         'Full-Stack Developer',
-        'Angular Developer',
+        'Software Engineer',
         'Problem Solver'
     ];
 
